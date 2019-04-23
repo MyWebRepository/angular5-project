@@ -1,0 +1,19 @@
+.container-fluid {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 40px;
+    color: white;
+    background-color: #303F9E;
+    padding: 0px 70px 0px 70px;
+}
+
+.active {
+    cursor: pointer;
+    background-color: darkblue;
+}
+
+span {
+    display: inline-block;
+    padding: 10px 6px 11px 6px;
+}
