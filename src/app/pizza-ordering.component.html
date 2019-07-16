@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+        <th rowspan="2">Toppings</th>
+        <th colspan="4">Pizza Size</th>
+    </tr>
+    <tr>
+        <th>{{getSizeTitle('Small')}}</th>
+        <th>{{getSizeTitle('Medium')}}</th>
+        <th>{{getSizeTitle('Large')}}</th>
+        <th>{{getSizeTitle('Extra Large')}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="5">Veg Toppings</td>
+    </tr>
+    <ng-container *ngFor="let t of toppingNams; let i = index">
+      <tr>
+        <ng-container *ngFor="let n of [0, 0, 0, 0, 0]; let j = index">
+          <td *ngIf="j==0">{{getToppingTitle(t)}}</td>
+          <td *ngIf="j>0"></td>
+        </ng-container>
+      </tr>
+      <tr *ngIf="i==4">
+        <td colspan="5">Non Veg Toppings</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
