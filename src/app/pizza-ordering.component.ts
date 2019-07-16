@@ -25,7 +25,7 @@ export class PizzaOrderingComponent implements OnInit {
   };
 
   private selected = [];
-  private results = [0, 0, 0, 0];
+  private results = [];
 
   constructor() {}
 
@@ -73,12 +73,62 @@ export class PizzaOrderingComponent implements OnInit {
     return this.selected[row][col];
   }
 
-  private calculate(row: number, col: number): void {
-    for (let i = 0; i <= 3; i++) {
-      if (i == 0) {
-        for (let j = 0; j <=  7; j++) {
+  public getResult(index: number): any {
+    return this.results[index];
+  }
 
+  private calculate(): void {
+    this.results = [];
+
+    for (let i = 0; i <= 3; i++) { 
+      if (i == 0 || i == 3) { // For small and extra large
+        let offer: string = '';
+        let total: number = 0 
+
+        for (let j = 0; j <=  7; j++) {
+          if (this.selected[j][i]) {
+            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+          }
         }
+        this.results.push({offer, total});
+      }
+
+      if (i == 1) { // For Medium
+        let offer: string = '';
+        let total: number = 0 
+        let count: number = 0;
+
+        for (let j = 0; j <=  7; j++) {
+          if (this.selected[j][i]) {
+            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+            count++;
+          }
+        }
+
+        this.results.push(count == 2 ? {offer: 'offer 1', total: 5} : {offer: '', total});
+      }
+
+      if (i == 2) { // For large
+        let offer: string = '';
+        let total: number = 0 
+        let count: number = 0;
+
+        for (let j = 0; j <=  7; j++) {
+          if (this.selected[j][i]) {
+            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+            count++;
+          }
+        }
+
+        if (this.selected[6][2]) { // Pepperoni is selected
+          count++;
+        }
+
+        if (this.selected[7][2]) { // Barbecue chicken is selected
+          count++;
+        }
+
+        this.results.push(count == 4 ? {offer: 'offer 3', total: total / 2.0} : {offer: '', total});
       }
     }
   }
