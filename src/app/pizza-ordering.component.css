@@ -1,10 +1,12 @@
 table {
+  font-size: 15px;
   width: 100%; 
-  margin: 20px;
+  margin: 30px;
   border-collapse: collapse;
 }
 
 th, td {
   width: 20%;
+  padding: 0.8em;
   border: solid 1px black;
 }

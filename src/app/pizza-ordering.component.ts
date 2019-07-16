@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pizza-ordering',
   templateUrl: './pizza-ordering.component.html',
   styleUrls: ['./pizza-ordering.component.css']
 })
-export class PizzaOrderingComponent {
+export class PizzaOrderingComponent implements OnInit {
   public readonly pizzaSizes = {
     'Small': 5,
     'Medium': 7,
@@ -24,7 +24,14 @@ export class PizzaOrderingComponent {
     'Barbecue chicken': '3.00'
   };
 
+  private selected = [];
+  private results = [0, 0, 0, 0];
+
   constructor() {}
+
+  ngOnInit(): void {
+    this.selected = this.getSelected();
+  }
 
   public getSizeTitle(sizeLabel: string): string {
     if (this.pizzaSizes[sizeLabel]) {
@@ -42,25 +49,37 @@ export class PizzaOrderingComponent {
     return toppingLabel;
   }
 
-   public get toppingNams(): string[] {
+  public get toppingNams(): string[] {
     return Object.keys(this.toppings);
-   }
+  }
 
-   public onClickCell(e) {
-     debugger;
-     alert('sdfsdf');
-    let target = e.currentTarget;
-   }
+  public onClickCell(row: number, col: number): void {
+    this.selected[row][col] = !this.selected[row][col];
+  }
 
-   public get selected(): Array<boolean[]> {
-     let result = [];
+  public getSelected(): Array<boolean[]> {
+    let result = [];
 
-     for (let i = 0; i <= 7; i++) {
+    for (let i = 0; i <= 7; i++) {
       let arr = Array(4);
       arr.fill(false);
       result.push(arr);
-     }
+    }
 
-     return result;
-   }
+    return result;
+  }
+
+  public isShown(row: number, col: number): boolean {
+    return this.selected[row][col];
+  }
+
+  private calculate(row: number, col: number): void {
+    for (let i = 0; i <= 3; i++) {
+      if (i == 0) {
+        for (let j = 0; j <=  7; j++) {
+
+        }
+      }
+    }
+  }
 }

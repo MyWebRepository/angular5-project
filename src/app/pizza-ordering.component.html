@@ -19,8 +19,8 @@
       <tr>
         <ng-container *ngFor="let n of [0, 0, 0, 0, 0]; let j = index">
           <td *ngIf="j==0">{{getToppingTitle(t)}}</td>
-          <td *ngIf="j>0" [row]="i" [col]="j" (click)="onClickCell(e)">
-            <img src="../assets/images/check.png">
+          <td *ngIf="j>0" (click)="onClickCell(i, j-1)">
+            <img *ngIf="isShown(i, j-1)" src="../assets/images/check.png">
           </td>
         </ng-container>
       </tr>
@@ -28,5 +28,22 @@
         <td colspan="5">Non Veg Toppings</td>
       </tr>
     </ng-container>
+    <tr>
+      <td colspan="5">Total</td>
+    </tr>
+    <tr>
+      <td>Offer</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+   </tr>
+   <tr>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+  </tr>
   </tbody>
 </table>
