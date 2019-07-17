@@ -35,28 +35,34 @@
       <td>Offer</td>
       <td></td>
       <td>
-        <ng-container *ngIf="getResult(1)&&getResult(1).offer!=''">{{getResult(1)?.offer}} - <img src="../assets/images/check.png"></ng-container>
+        <div class="flex-container" *ngIf="showOffer(1)">
+          <div class="flex-item">{{getResult(1)?.offer}} -&nbsp;&nbsp;</div>
+          <img src="../assets/images/check.png">
+        </div>
       </td>
       <td>
-        <ng-container *ngIf="getResult(2)&&getResult(2).offer!=''">{{getResult(2)?.offer}} - <img src="../assets/images/check.png"></ng-container>
+        <div class="flex-container" *ngIf="showOffer(2)">
+          <div class="flex-item">{{getResult(2)?.offer}} -&nbsp;&nbsp;</div>
+          <img src="../assets/images/check.png">
+        </div>      
       </td>
       <td></td>
     </tr>
     <tr>
       <td></td>
       <td>
-        <ng-container *ngIf="getResult(0)&&getResult(0).total>0">${{getResult(0)?.total}}</ng-container>
+        <ng-container *ngIf="showTotal(0)">${{getResult(0)?.total}}</ng-container>
       </td>
       <td>
-        <ng-container *ngIf="getResult(1)&&getResult(1).offer!=''"><span style="text-decoration:line-through;">${{getResult(1)?.originalTotal}}</span></ng-container>
-        <br/><ng-container *ngIf="getResult(1)&&getResult(1).total>0">${{getResult(1)?.total}}</ng-container>
+        <ng-container *ngIf="showOffer(1)"><span style="text-decoration:line-through;">${{getResult(1)?.originalTotal}}</span><br/></ng-container>
+        <ng-container *ngIf="showTotal(1)">${{getResult(1)?.total}}</ng-container>
       </td>
       <td>
-        <ng-container *ngIf="getResult(2)&&getResult(2).offer!=''"><span style="text-decoration:line-through;">${{getResult(2)?.originalTotal}}</span></ng-container>
-        <br/><ng-container *ngIf="getResult(2)&&getResult(2).total>0">${{getResult(2)?.total}}</ng-container>
+        <ng-container *ngIf="showOffer(2)"><span style="text-decoration:line-through;">${{getResult(2)?.originalTotal}}</span><br/></ng-container>
+        <ng-container *ngIf="showTotal(2)">${{getResult(2)?.total}}</ng-container>
       </td>
       <td>
-        <ng-container *ngIf="getResult(3)&&getResult(3).total>0">${{getResult(3)?.total}}</ng-container>
+        <ng-container *ngIf="showTotal(3)">${{getResult(3)?.total}}</ng-container>
       </td>
   </tr>
   </tbody>
