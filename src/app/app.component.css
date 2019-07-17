@@ -1,103 +1,16 @@
 body {
-    font-size: 12px !important;
+  font-size: 12px !important;
 }
 
-header {
-    color: white;
-    background-color: #7986CB;
-    padding: 90px 70px 50px 70px;
-}
-
-header .content {
-    margin-right: 40%;
-}
-
-.section1 {
-    display: flex;
-    margin: 50px 70px 50px 70px;
-    font-size: 12px;
-    border-bottom: solid lightgrey 1px;
-}
-.section1 .right {
-    order: 2;
-    flex-shrink: 0.5;
-    position: relative;
-    top: -22px;
-    padding-left: 15px;
-}
-
-.section1 .left {
-    order: 1;
-    flex-basis: 70%;
-}
-
-.section2 {
-    display: flex;
-    margin: 50px 70px 50px 70px;
-    font-size: 12px;
-    border-bottom: solid lightgrey 1px;
-}
-.section2 .left {
-    width: 30%;
-    order: 1;
-    position: relative;
-    top: -24px;
-    padding-right: 15px;
-}
-
-.section2 .right {
-    width: 70%;
-    order: 2;
-}
-
-.section3 {
-    display: flex;
-    margin: 50px 70px 50px 70px;
-    font-size: 12px;
-}
-.section3 .right {
-    flex-shrink: 0.5;
-    order: 2;
-    position: relative;
-    top: -20px;
-    padding-left: 15px;
-}
-
-.section3 .left {
-    flex-basis: 70%;
-    order: 1;
-}
-
-.section4 {
-    padding: 0px 70px 30px 70px;
-    font-size: 12px;
-}
-
-.section4 table {
-    width: 100%;
-}
-
-footer {
-    padding: 50px 70px 50px 70px;
-}
-
-footer > div {
-    background-color: lightgrey;
-}
-
-footer .row {
-    padding: 30px 70px 20px 70px
-}
-
-footer ul {
-    padding: 0px;
-    list-style: none;
+.container {
+  display: block;
+  padding: 50px;
 }
 
 h2 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h3 {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }

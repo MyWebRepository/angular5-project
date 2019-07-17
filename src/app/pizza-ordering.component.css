@@ -7,6 +7,30 @@ table {
 
 th, td {
   width: 20%;
-  padding: 0.8em;
+  padding: 0.5em;
   border: solid 1px black;
 }
+
+th {
+  text-align: center;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+td {
+  height: 50px;
+}
+
+td:nth-child(1) {
+  text-align: left;
+  vertical-align: middle;
+}
+
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5) {
+  text-align: center;
+  vertical-align: middle;
+}
+

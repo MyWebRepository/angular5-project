@@ -55,6 +55,7 @@ export class PizzaOrderingComponent implements OnInit {
 
   public onClickCell(row: number, col: number): void {
     this.selected[row][col] = !this.selected[row][col];
+    this.calculate();
   }
 
   public getSelected(): Array<boolean[]> {
@@ -87,9 +88,14 @@ export class PizzaOrderingComponent implements OnInit {
 
         for (let j = 0; j <=  7; j++) {
           if (this.selected[j][i]) {
-            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+            if (total == 0) {
+              total = Object.values(this.pizzaSizes)[i] + Number(Object.values(this.toppings)[j]);
+            } else {
+              total += Number(Object.values(this.toppings)[j]); 
+            }
           }
         }
+
         this.results.push({offer, total});
       }
 
@@ -100,12 +106,16 @@ export class PizzaOrderingComponent implements OnInit {
 
         for (let j = 0; j <=  7; j++) {
           if (this.selected[j][i]) {
-            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+            if (total == 0) {
+              total += Object.values(this.pizzaSizes)[i] + Number(Object.values(this.toppings)[j]);
+            } else {
+              total += Number(Object.values(this.toppings)[j]); 
+            }
             count++;
           }
         }
 
-        this.results.push(count == 2 ? {offer: 'offer 1', total: 5} : {offer: '', total});
+        this.results.push(count == 2 ? {offer: 'offer 1', total: 5, originalTotal: total} : {offer: '', total});
       }
 
       if (i == 2) { // For large
@@ -115,7 +125,11 @@ export class PizzaOrderingComponent implements OnInit {
 
         for (let j = 0; j <=  7; j++) {
           if (this.selected[j][i]) {
-            total += this.pizzaSizes[i] + Number(Object.values(this.toppings)[j]);
+            if (total == 0) {
+              total += Object.values(this.pizzaSizes)[i] + Number(Object.values(this.toppings)[j]);
+            } else {
+              total += Number(Object.values(this.toppings)[j]); 
+            }
             count++;
           }
         }
@@ -128,7 +142,7 @@ export class PizzaOrderingComponent implements OnInit {
           count++;
         }
 
-        this.results.push(count == 4 ? {offer: 'offer 3', total: total / 2.0} : {offer: '', total});
+        this.results.push(count == 4 ? {offer: 'offer 3', total: total / 2.0, originalTotal: total} : {offer: '', total});
       }
     }
   }

@@ -34,16 +34,30 @@
     <tr>
       <td>Offer</td>
       <td></td>
-      <td><div>{{getResult(1).offer}} - <img src="../assets/images/check.png"></div></td>
-      <td><div>{{getResult(2).offer}} - <img src="../assets/images/check.png"></div></td>
+      <td>
+        <ng-container *ngIf="getResult(1)&&getResult(1).offer!=''">{{getResult(1)?.offer}} - <img src="../assets/images/check.png"></ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="getResult(2)&&getResult(2).offer!=''">{{getResult(2)?.offer}} - <img src="../assets/images/check.png"></ng-container>
+      </td>
       <td></td>
-   </tr>
-   <tr>
-     <td></td>
-     <td>{{getResult(0).total}}</td>
-     <td>{{getResult(1).total}}</td>
-     <td>{{getResult(2).total}}</td>
-     <td>{{getResult(3).total}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <ng-container *ngIf="getResult(0)&&getResult(0).total>0">${{getResult(0)?.total}}</ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="getResult(1)&&getResult(1).offer!=''"><span style="text-decoration:line-through;">${{getResult(1)?.originalTotal}}</span></ng-container>
+        <br/><ng-container *ngIf="getResult(1)&&getResult(1).total>0">${{getResult(1)?.total}}</ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="getResult(2)&&getResult(2).offer!=''"><span style="text-decoration:line-through;">${{getResult(2)?.originalTotal}}</span></ng-container>
+        <br/><ng-container *ngIf="getResult(2)&&getResult(2).total>0">${{getResult(2)?.total}}</ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="getResult(3)&&getResult(3).total>0">${{getResult(3)?.total}}</ng-container>
+      </td>
   </tr>
   </tbody>
 </table>
